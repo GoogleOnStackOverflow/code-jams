@@ -63,7 +63,7 @@ int main(int argc, char *argv[]) {
         printf("%d ", word_counts(line, read));
 
         _alphabet_counts = alphabetic_counts(line, read);
-        for(i=0;i<26;i++){
+        for(i=0; i<26; i++){
             printf("%d ", _alphabet_counts[i]);
         }
         printf("\n");
