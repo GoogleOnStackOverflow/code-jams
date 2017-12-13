@@ -8,11 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool isLeapYear(int year) {
-    if(year % 400 == 0) return true;
-    if(year % 100 == 0) return false;
-    if(year % 4 == 0) return true;
-    return false;
+int isLeapYear(int year) {
+    if(year % 400 == 0) return 1;
+    if(year % 100 == 0) return 0;
+    if(year % 4 == 0) return 1;
+    return 0;
 }
 
 // Parameters
@@ -22,9 +22,15 @@ bool isLeapYear(int year) {
 // Return
 //  The number of birthdays one can have from Y to QY
 int leap_birthdays(const int D, const int M, const int Y, const int QY) {
-	int birthday_counts = 0;
-	// TODO
-    
+	int birthday_counts = 0, i=0;
+	
+    if(M == 2 && D == 29) {
+        for(i=Y+1; i<=QY; i++)
+            birthday_counts += isLeapYear(i);
+    } else {
+        birthday_counts = QY - Y;
+    }
+
 	return birthday_counts;
 }
 
@@ -57,8 +63,6 @@ int main(int argc, char *argv[]) {
     		memset(&line[read - 1], 0, 1);
     		--read;
     	}
-
-        printf("%s\n", line);
         
         dup = strdup(line);
         pch = strtok(dup, " ");

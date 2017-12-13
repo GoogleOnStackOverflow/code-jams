@@ -19,7 +19,7 @@
 int word_counts(const char* string, const ssize_t len_of_string) {
     int word_count = 0;
     // TODO
-
+    
     return word_count;
 }
 

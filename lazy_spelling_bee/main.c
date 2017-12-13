@@ -17,7 +17,7 @@
 //		The number of possible answers corresponding to the string
 int lazy_spelling_bee(const char *string, const ssize_t length_of_string) {
 	int possible_choices = 0;
-	// TODO
+	
 	int i = 0;
 	if(length_of_string == 1)
 		return 1;
