@@ -18,8 +18,20 @@
 //      A word is defined as one or more non-whitespace characters that contains at least one [a..z] and/or [A..Z]
 int word_counts(const char* string, const ssize_t len_of_string) {
     int word_count = 0;
-    // TODO
-    
+    int i = 0, state = 0;
+    for(i=0; i<len_of_string; i++) {
+        if (state == 0) {
+            if ((string[i] >= 65 && string[i] <= 90)
+            || (string[i] >= 97 && string[i] <= 122))
+                state = 1;
+        } else {
+            if (string[i] == ' ' || string[i] == '\n') {
+                state = 0;
+                ++word_count;
+            }
+        }
+    }
+
     return word_count;
 }
 
@@ -33,8 +45,19 @@ int word_counts(const char* string, const ssize_t len_of_string) {
 //      eg. alphabet_counts[0] stands for the number of times that A and a occurs in the string
 //          alphabet_counts[1] stands for B and b ...etc
 int *alphabetic_counts(const char *string, const ssize_t len_of_string) {
-	static int alphabet_counts [26] = {0};
-	// TODO
+	static int alphabet_counts [26];
+    int i = 0;
+
+    for(i=0; i<26; i++){
+        alphabet_counts[i] = 0;
+    }
+
+    for(i=0; i<len_of_string; i++) {
+        if (string[i] >= 65 && string[i] <= 90)
+            alphabet_counts[string[i] - 65]++;
+        if (string[i] >= 97 && string[i] <= 122)
+            alphabet_counts[string[i] - 97]++;
+    }
 
 	return alphabet_counts;
 }
@@ -63,7 +86,7 @@ int main(int argc, char *argv[]) {
         printf("%d ", word_counts(line, read));
 
         _alphabet_counts = alphabetic_counts(line, read);
-        for(i=0;i<26;i++){
+        for(i=0; i<26; i++){
             printf("%d ", _alphabet_counts[i]);
         }
         printf("\n");
