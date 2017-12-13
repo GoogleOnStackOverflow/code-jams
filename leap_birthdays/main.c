@@ -8,11 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool isLeapYear(int year) {
-    if(year % 400 == 0) return true;
-    if(year % 100 == 0) return false;
-    if(year % 4 == 0) return true;
-    return false;
+int isLeapYear(int year) {
+    if(year % 400 == 0) return 1;
+    if(year % 100 == 0) return 0;
+    if(year % 4 == 0) return 1;
+    return 0;
 }
 
 // Parameters
@@ -57,8 +57,6 @@ int main(int argc, char *argv[]) {
     		memset(&line[read - 1], 0, 1);
     		--read;
     	}
-
-        printf("%s\n", line);
         
         dup = strdup(line);
         pch = strtok(dup, " ");
