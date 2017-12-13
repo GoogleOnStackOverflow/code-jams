@@ -18,7 +18,20 @@
 int lazy_spelling_bee(const char *string, const ssize_t length_of_string) {
 	int possible_choices = 0;
 	// TODO
+	int i = 0;
+	if(length_of_string == 1)
+		return 1;
 
+	possible_choices = (string[0] == string[1]) ? 1 : 2;
+	
+	for(i=1; i<(length_of_string-1); i++){
+		possible_choices *= 1 + ((string[i-1] == string[i])? 0 : 1 )+ ((string[i] == string[i+1])? 0 : 1);
+		possible_choices = possible_choices % 1000000007;
+	}
+
+	possible_choices *= 
+		(string[length_of_string-1] == string[length_of_string-2]) ? 1 : 2;
+	possible_choices = possible_choices % 1000000007;
 	return possible_choices;
 }
 
