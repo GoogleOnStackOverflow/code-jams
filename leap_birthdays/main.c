@@ -1,7 +1,26 @@
+/* An implelemtation of ACM-ICPC Live Archive :: Regionals 2017 :: Asia-Dhaka 
+/* #8081 Leap Birthdays in C
+/* For more information, browse the website
+/* https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=776&page=show_problem&problem=6103
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+bool isLeapYear(int year) {
+    if(year % 400 == 0) return true;
+    if(year % 100 == 0) return false;
+    if(year % 4 == 0) return true;
+    return false;
+}
+
+// Parameters
+//  D/M/Y form one's bithday, as D denotes day (1 <= D <= 31)
+//  M denotes month (1 <= M <= 12), Y denotes year (1850 <= Y <= 2016)
+//  QY is the year upto which you need to calculate (inclusive)
+// Return
+//  The number of birthdays one can have from Y to QY
 int leap_birthdays(const int D, const int M, const int Y, const int QY) {
 	int birthday_counts = 0;
 	// TODO

@@ -1,7 +1,20 @@
+/* An implelemtation of Google Code Jam Practice Round APAC test 2017
+/* Lazy Spelling Bee (Problem A) in C
+/* For more information, browse the website
+/* https://code.google.com/codejam/contest/5254486/dashboard
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+// Parameters
+//	string: 
+//		a char array with a..z
+//	length_of_string:
+//		the length of the char array (in number of characters)
+// Return
+//		The number of possible answers corresponding to the string
 int lazy_spelling_bee(const char *string, const ssize_t length_of_string) {
 	int possible_choices = 0;
 	// TODO
